@@ -1,0 +1,31 @@
+from random import randint
+
+options = ["rock", "paper", "scissors"]
+
+computer = options[randint(0,2)]
+
+player = False
+
+while player == False: 
+    player = input("Choose Rock, Paper, or Scissors? ").lower()
+    if player == computer:
+        print("We chose the same! It's a tie!")
+    elif player == "rock":
+        if computer == "paper":
+            print("Oh no! I chose paper. You Lose!")
+        else:
+            print("I chose scissors. You're a ROCKstar! Ha! Get it?")
+    elif player == "paper":
+        if computer == "scissors":
+            print("I chose scissors. Sliced and diced. You Lose!")
+        else:
+            print("I chose rock. Smothered and covered, you win!")
+    elif player == "scissors":
+        if computer == "rock":
+            print("I chose rock. You got crushed!")
+        else:
+            print("I chose paper. You win!")
+    else:
+        print("Invalid response silly goose")
+    player == False
+    computer = options[randint(0,2)]
