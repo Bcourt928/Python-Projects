@@ -1,0 +1,49 @@
+def hangman(word):
+    wrong = 0
+    stages = ["",
+              "________        ",
+              "|       |       ",
+              "|       |       ",
+              "|       O       ",
+              "|      /|\      ",
+              "|      / \      ",
+              "|               "
+              ]
+    rletters = list(word)
+    board = ["__"] * len(word)
+    win = False
+    guess_list=[]
+    print("Welcome to Hangman")
+    while wrong < len(stages) - 1:
+        print("\n")
+        msg = "Guess a letter: "
+        char = input(msg)
+        
+        if char in guess_list:
+            print("Letter already guessed")
+        elif char in rletters:
+            cind = rletters \
+                .index(char)
+            board[cind] = char
+            rletters[cind] = '$'
+            guess_list.append(char)
+        else:
+            wrong += 1
+            guess_list.append(char)
+        print((" ".join(board)))
+        e = wrong + 1
+        print("\n"
+              .join(stages[0: e]))
+        
+        print("Letters already guessed: ", guess_list)
+        if "__" not in board:
+            print("Winner winner chicken dinner!")
+            print(" ".join(board))
+            win = True
+            break
+    if not win:
+        print("\n".join(stages[0: \
+                               wrong]))
+        print("You lose! It was {}."
+              .format(word))
+hangman("lovebug")
