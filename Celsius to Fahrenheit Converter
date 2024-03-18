@@ -1,0 +1,12 @@
+#celsius to fahrenheit converter
+celsius = float(input('What is the temperature in degrees Celsius? '))
+fahrenheit = celsius * (9/5) + 32
+print(f'The temperature is {fahrenheit} degrees Fahrenheit')
+if fahrenheit >= 100:
+    print('It is too hot!')
+elif fahrenheit >= 70:
+    print('The weather is beautiful!')
+elif fahrenheit >= 32:
+    print('Pack a coat. It is a bit chilly.')
+else:
+    print('It is too cold. Cozy up by the fire with a good book')
