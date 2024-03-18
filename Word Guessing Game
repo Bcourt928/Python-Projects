@@ -1,0 +1,56 @@
+import random
+game_name = 'Guess that Word'
+word_bank = []
+
+with open('words.txt') as word_file:
+    for line in word_file:
+        word_bank.append(line.rstrip().lower())
+
+guessing_word = random.choice(word_bank)
+incorrect_guesses = []
+misplaced_guesses = []
+turns_allowed = 5
+turns_taken = 0
+turns_left = turns_allowed - turns_taken
+
+print(f'Welcome to {game_name}: the word guessing game! You will have {turns_allowed} turns to guess a {len(guessing_word)}-letter word!')
+print(f'You have {turns_left} turns remaining.')
+
+while turns_taken < turns_allowed:
+    player_guess = input("Guess a word: ").lower()
+    if len(player_guess) != len(guessing_word) or not player_guess.isalpha():
+        print(f'Invalid response. Please choose a {len(guessing_word)}-letter word.')
+        continue
+    
+    
+
+    i = 0
+    for c in player_guess:
+        if c == guessing_word[i]:
+            print(c, end=' ')
+            if c in misplaced_guesses:
+                misplaced_guesses.remove(c)
+        elif c in guessing_word:
+            if c not in misplaced_guesses:
+                misplaced_guesses.append(c)
+            print('_', end=' ')
+        else:
+            if c not in guessing_word:
+                incorrect_guesses.append(c)
+            print('_', end=' ')
+        i += 1
+
+
+    turns_taken += 1
+    turns_left = turns_allowed - turns_taken
+    if player_guess == guessing_word:
+        print('WINNER WINNER CHICKEN DINNER')
+        break
+    elif turns_taken == turns_allowed:
+        print(f'You lose! The word was {guessing_word}')
+        break
+    else:
+        print('\n')
+    print(f'Letters in the wrong place: {misplaced_guesses}')
+    print(f'Letters not in the word: {incorrect_guesses}')
+    print(f'You have {turns_left} turns remaining.')
