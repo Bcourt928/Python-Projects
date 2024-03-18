@@ -1,0 +1,37 @@
+#city scorer
+city_score = 0
+scored_cities = []
+i = 1
+#variables
+while i > 0:
+    new_city = input('Which city are you scoring? ')
+
+    airport_score = float(input(f'Is {new_city} within 45 minutes of a major airport? 1 if yes, 0 if no: ')) * 10
+    driving_score = float(input(f'Is {new_city} within a 6 hour drive to Athens? 1 if yes, 0 if no: ')) * 8
+    outdoors_score = float(input(f'Does {new_city} have fun outdoor activities ? 1 if yes, 0 if no: ')) * 10
+    indoor_score = float(input(f'Does {new_city} have fun indoor activities? 1 if yes, 0 if no: ')) * 5
+    downtown_score = float(input(f'Is {new_city}\'s downtown cute? 1 if yes, 0 if no: ')) * 7
+    nightlife_score = float(input(f'Does {new_city} have fun nightlife? 1 if yes, 0 if no: ')) * 5
+    sidewalk_score = float(input(f'Are there sidewalks in {new_city}? 1 if yes, 0 if no: ')) * 3
+    beach_score = float(input(f'Is there a beach within an hour of {new_city}? 1 if yes, 0 if no: ')) * 7
+    house_score = float(input(f'Does {new_city} have houses under $600,000? 1 if yes, 0 if no: ')) * 10
+    yard_score = float(input(f'Is it possible to have a yard? 1 if yes, 0 if no: ')) * 8
+    transit_score = float(input(f'Does {new_city} have public transport systems? 1 if yes, 0 if no: ')) * 4
+    daytrip_score = float(input(f'Are there day trips from {new_city}? 1 if yes, 0 if no: ')) * 5
+    traderjoes_score = float(input(f'Is there a Trader Joe\'s? 1 if yes, 0 if no: ')) * 3
+    weather_score = float(input(f'Is the weather nice in {new_city}? 1 if yes, 0 if no: ')) * 6
+    sports_score = float(input(f'Does {new_city} have professional sports teams? 1 if yes, 0 if no: ')) * 2
+    wrestling_score = float(input(f'Does {new_city} have a Division 1 wrestling team? 1 if yes, 0 if no: ')) * 5
+    family_score = float(input(f'Is {new_city} close to family? 1 if yes, 0 if no: ')) * 7
+    rainy_score = float(input(f'Is {new_city} located in a state that is in the top 10 rainiest? 1 if yes, 0 if no: ')) * 5
+
+
+    city_score = int((airport_score + rainy_score + family_score + daytrip_score + weather_score + wrestling_score + sports_score + traderjoes_score + yard_score + transit_score + driving_score + outdoors_score + downtown_score + indoor_score + nightlife_score + sidewalk_score + beach_score + house_score) / 1.1) 
+    scored_cities.append(f'{new_city}: {city_score}')
+    print(f'{new_city} has a score of {city_score}%')
+    again = input('Would you like to rate another city? yes or no: ')
+    if again == 'yes':
+        city_score = 0
+    else:
+        i -= 1
+print(f'The offical final scores are: {scored_cities}')
