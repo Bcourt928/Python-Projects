@@ -1,0 +1,228 @@
+import random
+pokemon_list =[]
+starters = []
+my_pokemon = []
+my_hp = 10
+opponent_hp = 10
+starter_xp = 0
+
+with open('pokemon_list.txt') as word_file:
+    for line in word_file:
+        pokemon_list.append(line.rstrip())
+
+
+#creating the starters list
+for item in pokemon_list:
+    if pokemon_list[1]:
+        starters.append(pokemon_list[1])
+    if pokemon_list[1] in starters:
+        break
+
+for item in pokemon_list:
+    if pokemon_list[4]:
+        starters.append(pokemon_list[4])
+    if pokemon_list[4] in starters:
+        break    
+
+for item in pokemon_list:
+    if pokemon_list[7]:
+        starters.append(pokemon_list[7])
+    if pokemon_list[7] in starters:
+        break
+for item in pokemon_list:
+    if pokemon_list[25]:
+        starters.append(pokemon_list[25])
+    if pokemon_list[25] in starters:
+        break
+print('Narrator: Welcome to Kanto and the wonderful world of Pokemon. Your adventure awaits...')
+print(' ')
+your_name = str(input('Narrator: What is your name? '))
+rival_name = str(input('Narrator: What is your rival\'s name? '))
+
+
+#starting
+print('Narrator: You awake on your 10th birthday. You\'re estatic since you finally get your own Pokemon today!')
+start_the_game = str(input('Narrator: Would you like to visit Professor Oak to pick out your very first Pokemon? Yes or No: ').lower())
+
+if start_the_game == 'yes':
+    print('Narrator: Great choice! You walk over to Professor Oak\'s Lab')
+else:
+    exit()
+
+
+#starter choice
+while True:
+    starter_choice = str(input(f'Prof. Oak: Welcome {your_name}, which Pokemon would you like to choose? Bulbasaur, Charmander, or Squirtle? '))
+    starter_checker = starter_choice.lower()
+    if starter_checker == 'bulbasaur':
+        print(f'Prof. Oak: Ah I see you have chosen the grass-pokemon {starters[0]}.')
+        my_pokemon.append(starters[0])
+        rival_choice = starters[1]
+        break
+    elif starter_checker == 'charmander':
+        print(f'Prof. Oak: A fiery choice! {starters[1]} is a fire-type Pokemon.')
+        my_pokemon.append(starters[1])
+        rival_choice = starters[2]
+        break
+    elif starter_checker == 'squirtle':
+        print(f'Prof. Oak: You have chosen {starters[2]} the water Pokemon.')
+        my_pokemon.append(starters[2])
+        rival_choice = starters[0]
+        break
+    elif your_name == 'Ash':
+        print(f'Prof. Oak: We only have {starters[3]} left.')
+        my_pokemon.append(starters[3])
+        rival_choice = starters[0]
+        starter_choice = 'Pikachu'
+        break
+    print('Prof. Oak: Please choose one of the starter Pokemon.')
+
+#first rival encounter
+print(' ')
+print(f'Narrator: {rival_name} barges in')
+print(f'{rival_name}: Hmmm I see you picked {starter_choice}. What a weak Pokemon!')
+print(f'{rival_name}: I choose {rival_choice}!')
+print(' ')
+
+
+#battle
+win = False
+
+while win == False:
+    if my_hp > opponent_hp:
+        print(f'Narrator: You won! {starter_choice} gained 10 experience')
+        starter_xp += 10
+        break
+    elif my_hp <= opponent_hp and my_hp < 10:
+        print(f'{rival_name}: Ha! I knew {rival_choice} was a stronger option...')
+        quit_option = input('Narrator: Would you like to continue? Yes or No? ').lower()
+        if quit_option == 'yes':
+            print('It\'s on!')
+        else:
+            exit()
+    my_hp = 10
+    opponent_hp = 10
+    commencement = input(f'{rival_name}: Hey what do you say we battle? ')
+    while my_hp > 0 and opponent_hp > 0:
+        my_attack = random.randint(0, 10)
+        opponent_attack = random.randint(0,10)
+        print(' ')
+        again = input(f'{rival_name}: Are you ready for this? ')
+        print(' ')
+        if my_attack > 5:
+            print(f'Narrator: Wow a critical hit! {starter_choice} did {my_attack} damage')
+            opponent_hp -= my_attack
+            print(f'Narrator: Your opponent has {opponent_hp} hp remaining')
+            my_hp -= opponent_attack
+            print(f'Narrator: Your oppenent did {opponent_attack} damage.')
+            print(f'Narrator: You have {my_hp} hp remaining')
+        elif my_attack > 0:
+            print(f'Narrator: {starter_choice} did {my_attack} damage')
+            opponent_hp -= my_attack
+            print(f'Narrator: Your opponent has {opponent_hp} hp remaining')
+            my_hp -= opponent_attack
+            print(f'Narrator: Your oppenent did {opponent_attack} damage.')
+            print(f'Narrator: You have {my_hp} hp remaining')
+        elif my_attack == 0:
+            print(f'Narrator: You missed. {starter_choice} did {my_attack} damage')
+            opponent_hp -= my_attack
+            print(f'Narrator: Your opponent has {opponent_hp} hp remaining')
+            my_hp -= opponent_attack
+            print(f'Narrator: Your oppenent did {opponent_attack} damage.')
+            print(f'Narrator: You have {my_hp} hp remaining')
+
+my_hp = 10
+opponent_hp = 10
+print(' ')
+print(f'{rival_name}: Whatever. You got lucky that\'s all. Smell ya later!')
+print(' ')
+print(f'Prof. Oak: Congratulations {your_name} on your first battle victory against {rival_name}.')
+print(f'Prof. Oak: Next stop is Route 1.')
+print('')
+route1 = str(input('Narrator: Would you like to head north to Route 1? Yes or No ')).lower()
+
+if route1 == 'yes':
+    print('Narrator: You have entered Route 1.')
+else:
+    exit()
+
+#route 1
+route1_pokemon = []
+for item in pokemon_list:
+    if pokemon_list[16]:
+        route1_pokemon.append(pokemon_list[16])
+    if pokemon_list[16] in route1_pokemon:
+        break
+
+for item in pokemon_list:
+    if pokemon_list[19]:
+        route1_pokemon.append(pokemon_list[19])
+    if pokemon_list[19] in route1_pokemon:
+        break
+
+i = 3
+while i > 0:
+    index = random.randint(0,1)
+    encountered_pokemon = route1_pokemon[index]
+    print(f'A wild {encountered_pokemon} has appeared!')
+    choice = input('What would you like to do? Catch, Fight, or Run? ').lower()
+    if choice == 'catch':
+        catch_success = random.randint(0,10)
+        if catch_success >= 5:
+            print(f'Congratulations! You caught {encountered_pokemon}')
+            my_pokemon.append(encountered_pokemon)
+        else:
+            print(f'{encountered_pokemon} fled.')
+    elif choice == "fight": 
+        win = False
+        while win == False:
+            if my_hp > opponent_hp:
+                print(f'Narrator: You won! {starter_choice} gained 10 experience')
+                starter_xp += 10
+                break
+            elif my_hp <= opponent_hp and my_hp < 10:
+                print(f'{starter_choice} was knocked out. You lose..')
+                quit_option = input('Narrator: Would you like to continue? Yes or No? ').lower()
+                if quit_option == 'yes':
+                    print('It\'s on!')
+                else:
+                    exit()
+            my_hp = 10
+            opponent_hp = 10
+            commencement = input(f'The battle begins!')
+            while my_hp > 0 and opponent_hp > 0:
+                my_attack = random.randint(0, 10)
+                opponent_attack = random.randint(0,10)
+                print(' ')
+                again = input(f'Narrator: Are you ready for this? ')
+                print(' ')
+                if my_attack > 5:
+                    print(f'Narrator: Wow a critical hit! {starter_choice} did {my_attack} damage')
+                    opponent_hp -= my_attack
+                    print(f'Narrator: Your opponent has {opponent_hp} hp remaining')
+                    my_hp -= opponent_attack
+                    print(f'Narrator: Your oppenent did {opponent_attack} damage.')
+                    print(f'Narrator: You have {my_hp} hp remaining')
+                elif my_attack > 0:
+                    print(f'Narrator: {starter_choice} did {my_attack} damage')
+                    opponent_hp -= my_attack
+                    print(f'Narrator: Your opponent has {opponent_hp} hp remaining')
+                    my_hp -= opponent_attack
+                    print(f'Narrator: Your oppenent did {opponent_attack} damage.')
+                    print(f'Narrator: You have {my_hp} hp remaining')
+                elif my_attack == 0:
+                    print(f'Narrator: You missed. {starter_choice} did {my_attack} damage')
+                    opponent_hp -= my_attack
+                    print(f'Narrator: Your opponent has {opponent_hp} hp remaining')
+                    my_hp -= opponent_attack
+                    print(f'Narrator: Your oppenent did {opponent_attack} damage.')
+                    print(f'Narrator: You have {my_hp} hp remaining')
+    elif choice == 'run':
+        print('Got away safely')
+    i -= 1
+
+print(' ')
+
+print(my_pokemon)
+
+
