@@ -1,0 +1,49 @@
+import random
+num = random.randint(1,100)
+
+print('Welcome to Hot or Cold!')
+print('I will think of a number between 1 and 100.')
+print('You will make guesses and I will give you hints')
+print('Warmer means you are getting closer, Colder means you are further from being right.')
+
+guess1 = int(input('What is your first guess? '))
+if guess1 < num:
+    print('Too low!')
+elif guess1 > num:
+    print('Too high')
+elif guess1 == num:
+    print('WINNER WINNER CHICKEN DINNER')
+    exit()
+
+guess2 = int(input('What is your second guess? '))
+diff_guess1 = abs(num - guess1)
+diff_guess2 = abs(num - guess2)
+
+if guess2 == num:
+    print('WINNER WINNER CHICKEN DINNER')
+    exit()
+elif diff_guess2 > diff_guess1: 
+    print('Colder.')
+    guess1 = guess1
+elif diff_guess2 < diff_guess1:
+    print('Warmer.')
+    guess1 = guess2
+
+win = False
+while win == False:
+    if guess1 == num:
+        print('WINNER WINNER CHICKEN DINNER')
+        exit()
+    guess2 = int(input('What is your next guess? '))
+    diff_guess1 = abs(num - guess1)
+    diff_guess2 = abs(num - guess2)
+
+    if guess2 == num:
+        print('WINNER WINNER CHICKEN DINNER')
+        exit()
+    elif diff_guess2 > diff_guess1: 
+        print(f'Colder compared to {guess1}.')
+        guess1 = guess1
+    elif diff_guess2 < diff_guess1:
+        print(f'Warmer compared to {guess1}.')
+        guess1 = guess2
