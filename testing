@@ -1,0 +1,20 @@
+dictionary = []
+hashed_dictionary = []
+password = 'Cat123'
+
+with open('password.example.txt') as word_file:
+    for line in word_file:
+        dictionary.append(line.rstrip())
+
+with open('password.example.txt') as word_file:
+    for line in word_file:
+        hashed_password = line #hasing alg here
+        hashed_dictionary.append(hashed_password.rstrip())
+i = 0
+x = 0
+while i < len(hashed_dictionary):
+    if password in hashed_dictionary
+print(dictionary)
+print(hashed_dictionary)
+#if password in dictionary:
+    #(f'The password is {password}')
